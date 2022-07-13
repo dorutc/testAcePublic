@@ -8,6 +8,9 @@ RUN . /opt/ibm/ace-12/server/bin/mqsiprofile
 
 RUN /opt/ibm/ace-12/server/bin/mqsicreateworkdir /home/aceuser/ace-server-test
 USER root
+RUN chmod +x /usr/local/bin/*.sh
+RUN  chmod -R ugo+rwx /home/aceuser
+
 RUN . /opt/ibm/ace-12/server/bin/mqsiprofile
 RUN /opt/ibm/ace-12/server/bin/ibmint deploy --input-bar-file /home/aceuser/initial-config/bars/TestDoru.bar --output-work-directory /home/aceuser/ace-server-test
 
