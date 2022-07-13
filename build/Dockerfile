@@ -4,8 +4,10 @@ ENV LICENSE=accept
 
 COPY initial-config/ /home/aceuser/initial-config/
 
+USER root
+
 RUN . /opt/ibm/ace-12/server/bin/mqsiprofile
 
 RUN /opt/ibm/ace-12/server/bin/mqsicreateworkdir /home/aceuser/ace-server-test
 
-
+USER aceuser
