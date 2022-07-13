@@ -6,3 +6,12 @@ COPY initial-config/ /home/aceuser/initial-config/
 
 RUN /opt/ibm/ace-12/server/bin/mqsicreateworkdir /home/aceuser/ace-server-test
 
+USER root
+
+RUN /opt/ibm/ace-12/server/bin/ibmint deploy --input-bar-file /home/aceuser/initial-config/bars/TestDoru.bar --output-work-directory /home/aceuser/ace-server-test
+
+RUN /opt/ibm/ace-12/server/bin/IntegrationServer --work-dir /home/aceuser/ace-server-test --test-project TestDoru_Test --start-msgflows false
+
+USER aceuser
+
+ENTRYPOINT ["runaceserver"]
