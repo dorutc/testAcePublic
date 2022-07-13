@@ -2,14 +2,15 @@ FROM icr.io/appc-dev/ace-server@sha256:a41f7501fe4025d2705bcabf1ad2ff523bcaf9ec2
 
 ENV LICENSE=accept
 
-#COPY initial-config/ /home/aceuser/initial-config/
+COPY initial-config/ /home/aceuser/initial-config/
 
 
 RUN /opt/ibm/ace-12/server/bin/mqsicreateworkdir /home/aceuser/ace-server-test
 
 
 RUN . /opt/ibm/ace-12/server/bin/mqsiprofile
-RUN /opt/ibm/ace-12/server/bin/ibmint deploy --input-bar-file /home/aceuser/initial-config/bars/TestDoru.bar --output-work-directory /home/aceuser/ace-server
+#RUN /opt/ibm/ace-12/server/bin/ibmint deploy --input-bar-file /home/aceuser/initial-config/bars/TestDoru.bar --output-work-directory /home/aceuser/ace-server
+RUN /opt/ibm/ace-12/server/bin/mqsibar -a /home/aceuser/initial-config/bars/TestDoru.bar -w /home/aceuser/ace-server-test
 
-#RUN /opt/ibm/ace-12/server/bin/IntegrationServer --work-dir /home/aceuser/ace-server-test --test-project TestDoru_Test --start-msgflows false
+RUN /opt/ibm/ace-12/server/bin/IntegrationServer --work-dir /home/aceuser/ace-server-test --test-project TestDoru_Test --start-msgflows false
 
