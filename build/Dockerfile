@@ -1,0 +1,3 @@
+FROM icr.io/appc-dev/ace-server@sha256:a41f7501fe4025d2705bcabf1ad2ff523bcaf9ec263b98054501de1fc0cf5f62
+
+ENV LICENSE=accept
