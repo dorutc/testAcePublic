@@ -6,8 +6,11 @@ COPY initial-config/ /home/aceuser/initial-config/
 
 RUN . /opt/ibm/ace-12/server/bin/mqsiprofile
 
-RUN /opt/ibm/ace-12/server/bin/mqsicreateworkdir /home/aceuser/ace-server-test
+
 USER root
+
+RUN /opt/ibm/ace-12/server/bin/mqsicreateworkdir /home/aceuser/ace-server-test
+
 RUN chmod +x /usr/local/bin/*.sh
 RUN  chmod -R ugo+rwx /home/aceuser
 
