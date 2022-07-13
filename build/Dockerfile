@@ -4,16 +4,12 @@ ENV LICENSE=accept
 
 #COPY initial-config/ /home/aceuser/initial-config/
 
-USER root
 
 RUN /opt/ibm/ace-12/server/bin/mqsicreateworkdir /home/aceuser/ace-server-test
 
-RUN chmod +x /usr/local/bin/*.sh
-RUN  chmod -R ugo+rwx /home/aceuser
 
 RUN . /opt/ibm/ace-12/server/bin/mqsiprofile
 RUN /opt/ibm/ace-12/server/bin/ibmint deploy --input-bar-file /home/aceuser/initial-config/bars/TestDoru.bar --output-work-directory /home/aceuser/ace-server
 
-RUN /opt/ibm/ace-12/server/bin/IntegrationServer --work-dir /home/aceuser/ace-server-test --test-project TestDoru_Test --start-msgflows false
+#RUN /opt/ibm/ace-12/server/bin/IntegrationServer --work-dir /home/aceuser/ace-server-test --test-project TestDoru_Test --start-msgflows false
 
-USER aceuser
