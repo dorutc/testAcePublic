@@ -2,7 +2,7 @@ FROM icr.io/appc-dev/ace-server@sha256:a41f7501fe4025d2705bcabf1ad2ff523bcaf9ec2
 
 ENV LICENSE=accept
 
-COPY initial-config/ /home/aceuser/initial-config/
+COPY ../initial-config/ /home/aceuser/initial-config/
 
 USER root
 
